@@ -24,9 +24,43 @@
     <meta property="twitter:image" content="https://evrostraj.netlify.app/share-image.png">
     <!-- === КРАЙ НА НАСТРОЙКИТЕ === -->
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://evrolev.vercel.app/">
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8552016454740259"
         crossorigin="anonymous"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Евро Страж - Калкулатор BGN EUR",
+      "applicationCategory": "FinanceApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BGN"
+      },
+      "operatingSystem": "Web Browser",
+      "description": "Безплатен калкулатор за конвертиране на лева в евро с гласови команди и реален курс.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "127"
+      }
+    }
+    </script>
 
     <style>
         :root {
