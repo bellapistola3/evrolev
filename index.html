@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="bg">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <title>ЕВРО СТРАЖ - Dimoff Studio PRO V2</title>
-    <meta name="description" content="Безплатен евро калкулатор с гласови команди и помощ за възрастни хора от Dimoff Studio PRO V2.">
+
+    <title>Евро Лев Калкулатор 2026 - ЕВРО СТРАЖ | Безплатен Конвертор BGN EUR</title>
+    <meta name="description"
+        content="Безплатен калкулатор евро лева с гласови команди. Конвертирай BGN към EUR с реален курс 1.95583. Бърз, точен и лесен за ползване!">
 
     <!-- === НАСТРОЙКИ ЗА СОЦИАЛНИ МРЕЖИ (СИН ЩИТ) === -->
     <meta property="og:type" content="website">
@@ -17,66 +19,361 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://evrostraj.netlify.app/">
     <meta property="twitter:title" content="ЕВРО СТРАЖ - Твоят калкулатор за Евро 2026">
-    <meta property="twitter:description" content="Пресметни лесно от лева в евро. Бързо, точно и БЕЗПЛАТНО ДО ЖИВОТ!🛡️">
+    <meta property="twitter:description"
+        content="Пресметни лесно от лева в евро. Бързо, точно и БЕЗПЛАТНО ДО ЖИВОТ!🛡️">
     <meta property="twitter:image" content="https://evrostraj.netlify.app/share-image.png">
     <!-- === КРАЙ НА НАСТРОЙКИТЕ === -->
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8552016454740259"
+        crossorigin="anonymous"></script>
 
     <style>
-        :root { --accent: #ff3b30; --blue-frame: #0062ff; --bg: #000; --card: #111; --btn-gray: #222; }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-        body { font-family: sans-serif; background: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; color: white; min-height: 100vh; }
-        .app { background: var(--card); width: 100%; max-width: 400px; display: flex; flex-direction: column; border: 10px solid var(--blue-frame); border-radius: 30px; position: relative; margin: 15px 10px; overflow: hidden; box-shadow: 0 0 30px rgba(0, 98, 255, 0.5); }
-        .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #000; border-bottom: 1px solid #222; }
-        .top-btn { background: #333; color: white; border: 1px solid var(--blue-frame); padding: 6px 14px; border-radius: 15px; font-size: 11px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
-        .title { font-weight: 900; color: var(--accent); letter-spacing: 2px; font-size: 18px; margin: 0; }
-        #speech { height: 35px; background: #0a0a0a; color: #888; text-align: center; padding: 8px; font-size: 12px; font-weight: bold; border-bottom: 1px solid #222; }
-        .display { padding: 15px; background: #181818; }
-        .field { background: #222; padding: 10px; border-radius: 12px; border: 2px solid #333; position: relative; margin-bottom: 8px; cursor: pointer; }
-        .field.active { border-color: var(--accent); background: #2a0000; }
-        label { font-size: 10px; color: var(--accent); text-transform: uppercase; font-weight: bold; }
-        input { width: 100%; border: none; background: transparent; font-size: 30px; font-weight: 700; color: white; outline: none; pointer-events: none; }
-        .unit { position: absolute; right: 15px; bottom: 12px; font-size: 14px; color: #555; font-weight: 900; }
-        .cart { max-height: 80px; overflow-y: auto; padding: 0 15px; font-size: 13px; color: #aaa; border-left: 4px solid var(--accent); margin: 5px 15px; }
-        .keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; padding: 10px; background: #000; }
-        button { border: none; background: var(--btn-gray); color: white; font-size: 24px; font-weight: bold; border-radius: 12px; padding: 22px 0; cursor: pointer; transition: 0.1s; }
-        button:active { filter: brightness(1.8); transform: scale(0.95); }
-        .c-btn { background: #ff3b30 !important; } .del-btn { background: #ff9500 !important; } .mic-btn { background: #007aff !important; } .add-btn { background: #28a745 !important; font-size: 14px; color: white; } .eq-btn { background: var(--accent) !important; font-size: 18px; } .op { color: var(--accent); font-size: 30px; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 100; padding: 25px; }
-        .modal-content { max-width: 400px; margin: auto; color: white; line-height: 1.6; }
-        .modal h2 { color: var(--accent); border-bottom: 2px solid var(--blue-frame); padding-bottom: 10px; }
-        .close-btn { background: var(--blue-frame); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-weight: bold; font-size: 16px; margin-top: 25px; cursor: pointer; }
-        .footer-fixed { background: #000; width: 100%; border-top: 1px solid #222; }
-        #ad-space { min-height: 90px; display: flex; align-items: center; justify-content: center; color: #444; font-size: 12px; background: #080808; text-align: center; }
-        .info { padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-        .mic-on { animation: pulse 1s infinite; background: white !important; color: red !important; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        :root {
+            --accent: #ff3b30;
+            --blue-frame: #0062ff;
+            --bg: #000;
+            --card: #111;
+            --btn-gray: #222;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: var(--bg);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .app {
+            background: var(--card);
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            border: 10px solid var(--blue-frame);
+            border-radius: 30px;
+            position: relative;
+            margin: 15px 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 98, 255, 0.5);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #000;
+            border-bottom: 1px solid #222;
+        }
+
+        .top-btn {
+            background: #333;
+            color: white;
+            border: 1px solid var(--blue-frame);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 11px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-weight: 900;
+            color: var(--accent);
+            letter-spacing: 2px;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        #speech {
+            height: 35px;
+            background: #0a0a0a;
+            color: #888;
+            text-align: center;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-bottom: 1px solid #222;
+        }
+
+        .display {
+            padding: 15px;
+            background: #181818;
+        }
+
+        .field {
+            background: #222;
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid #333;
+            position: relative;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .field.active {
+            border-color: var(--accent);
+            background: #2a0000;
+        }
+
+        label {
+            font-size: 10px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-size: 30px;
+            font-weight: 700;
+            color: white;
+            outline: none;
+            pointer-events: none;
+        }
+
+        .unit {
+            position: absolute;
+            right: 15px;
+            bottom: 12px;
+            font-size: 14px;
+            color: #555;
+            font-weight: 900;
+        }
+
+        .cart {
+            max-height: 80px;
+            overflow-y: auto;
+            padding: 0 15px;
+            font-size: 13px;
+            color: #aaa;
+            border-left: 4px solid var(--accent);
+            margin: 5px 15px;
+        }
+
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            padding: 10px;
+            background: #000;
+        }
+
+        button {
+            border: none;
+            background: var(--btn-gray);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 12px;
+            padding: 22px 0;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        button:active {
+            filter: brightness(1.8);
+            transform: scale(0.95);
+        }
+
+        .c-btn {
+            background: #ff3b30 !important;
+        }
+
+        .del-btn {
+            background: #ff9500 !important;
+        }
+
+        .mic-btn {
+            background: #007aff !important;
+        }
+
+        .add-btn {
+            background: #28a745 !important;
+            font-size: 14px;
+            color: white;
+        }
+
+        .eq-btn {
+            background: var(--accent) !important;
+            font-size: 18px;
+        }
+
+        .op {
+            color: var(--accent);
+            font-size: 30px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.96);
+            z-index: 100;
+            padding: 25px;
+        }
+
+        .modal-content {
+            max-width: 400px;
+            margin: auto;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .modal h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--blue-frame);
+            padding-bottom: 10px;
+        }
+
+        .close-btn {
+            background: var(--blue-frame);
+            color: white;
+            border: none;
+            padding: 18px;
+            width: 100%;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        .footer-fixed {
+            background: #000;
+            width: 100%;
+            border-top: 1px solid #222;
+        }
+
+        #ad-space {
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-size: 12px;
+            background: #080808;
+            text-align: center;
+        }
+
+        .info {
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .mic-on {
+            animation: pulse 1s infinite;
+            background: white !important;
+            color: red !important;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
+
 <body onload="setActive('bgn')">
-<div id="helpModal" class="modal"><div class="modal-content"><h2>🛡️ ИНСТРУКЦИИ ЗА ПОЛЗВАНЕ</h2><p>1. <b>ИЗБОР:</b> Натиснете полето "ЛЕВА" или "ЕВРО", за да изберете в какво ще пишете.</p><p>2. <b>ГЛАС:</b> Натиснете микрофона 🎤 и кажете например "Петдесет стотинки" или "Десет евро".</p><p>3. <b>ПАЗАРУВАНЕ:</b> С бутона <b>+ ДОБАВИ</b> можете да събирате цените на продуктите в магазина.</p><p>4. <b>ИЗТРИВАНЕ:</b> Бутонът <b>C</b> изтрива всичко, а <b>⌫</b> изтрива последната цифра.</p><button class="close-btn" onclick="closeHelp()">РАЗБРАХ, БЛАГОДАРЯ!</button></div></div>
-<div class="app">
-    <div class="top-bar"><button class="top-btn" onclick="openHelp()">ПОМОЩ ❓</button><p class="title">ЕВРО СТРАЖ</p><button class="top-btn" onclick="shareApp()">СПОДЕЛИ 🔗</button></div>
-    <div id="speech">Система в помощ на хората</div>
-    <div class="display"><div class="field" id="f-bgn" onclick="setActive('bgn')"><label>ЛЕВА И СТОТИНКИ (BGN)</label><input type="text" id="bgn" value="0" readonly><span class="unit">лв.</span></div><div class="field" id="f-eur" onclick="setActive('eur')"><label>ЕВРО И ЦЕНТОВЕ (EUR)</label><input type="text" id="eur" value="0.00" readonly><span class="unit">€</span></div></div>
-    <div class="cart" id="cart"></div>
-    <div class="keys"><button class="c-btn" onclick="cl()">C</button><button class="del-btn" onclick="dl()">⌫</button><button id="vBtn" class="mic-btn" onclick="vc()">🎤</button><button class="op" onclick="p('/')">÷</button><button onclick="p('7')">7</button><button onclick="p('8')">8</button><button onclick="p('9')">9</button><button class="op" onclick="p('*')">×</button><button onclick="p('4')">4</button><button onclick="p('5')">5</button><button onclick="p('6')">6</button><button class="op" onclick="p('-')">−</button><button onclick="p('1')">1</button><button onclick="p('2')">2</button><button onclick="p('3')">3</button><button class="op" onclick="p('+')">+</button><button onclick="p('0')">0</button><button onclick="p('.')">.</button><button class="add-btn" onclick="addToCart()">+ ДОБАВИ</button><button class="eq-btn" onclick="ex()">РАВНО</button></div>
-    <div class="footer-fixed"><div id="ad-space">РЕКЛАМЕН БЛОК<br><small>GOOGLE ADS READY</small></div><div class="info"><span style="color:var(--accent); font-weight:900;">DIMOFF STUDIO PRO V2</span><span style="color:#666; font-weight: bold;">КУРС: 1.95583</span></div></div>
-</div>
-<script>
-    const R = 1.95583; let exp = "", activeId = "bgn", totalBGN = 0;
-    function openHelp() { document.getElementById('helpModal').style.display = 'block'; }
-    function closeHelp() { document.getElementById('helpModal').style.display = 'none'; }
-    function shareApp() { if (navigator.share) { navigator.share({ title: 'Евро Страж', text: 'Ползвай безплатния калкулатор на Dimoff Studio!', url: window.location.href }); } else { alert("Копирай линка и го изпрати на приятел!"); } }
-    function setActive(id) { activeId = id; document.getElementById('f-bgn').classList.remove('active'); document.getElementById('f-eur').classList.remove('active'); document.getElementById('f-' + id).classList.add('active'); exp = ""; document.getElementById('speech').innerText = "Режим: " + (id === "bgn" ? "ЛЕВА" : "ЕВРО"); }
-    function p(v) { exp += v; document.getElementById(activeId).value = exp; up(); }
-    function cl() { exp = ""; totalBGN = 0; document.getElementById('bgn').value = "0"; document.getElementById('eur').value = "0.00"; document.getElementById('cart').innerHTML = ""; document.getElementById('speech').innerText = "Изчистено"; }
-    function dl() { exp = exp.toString().slice(0, -1); document.getElementById(activeId).value = exp || "0"; up(); }
-    function up() { try { let v = eval(exp.replace('×','*').replace('÷','/')) || 0; if(activeId === "bgn") document.getElementById('eur').value = (v / R).toFixed(2); else document.getElementById('bgn').value = (v * R).toFixed(2); } catch(e){} }
-    function addToCart() { try { let val = eval(exp.replace('×','*').replace('÷','/')) || 0; if(val === 0) return; let bgnVal = (activeId === "bgn") ? val : val * R; totalBGN += bgnVal; const item = document.createElement('div'); item.style.padding = "3px 0"; item.innerHTML = `+ ${val.toFixed(2)} ${activeId.toUpperCase()} (Общо: ${(totalBGN/R).toFixed(2)} €)`; document.getElementById('cart').prepend(item); exp = ""; document.getElementById(activeId).value = "0"; } catch(e){} }
-    function ex() { try { let r = eval(exp.replace('×','*').replace('÷','/')); let res = r.toFixed(2); if(activeId === "bgn") { let ev = (r / R).toFixed(2); document.getElementById('bgn').value = res; document.getElementById('eur').value = ev; document.getElementById('speech').innerText = res + " лв. = " + ev + " €"; } else { let lv = (r * R).toFixed(2); document.getElementById('eur').value = res; document.getElementById('bgn').value = lv; document.getElementById('speech').innerText = res + " € = " + lv + " лв."; } exp = res; } catch(e){ cl(); } }
-    function vc() { const S = window.SpeechRecognition || window.webkitSpeechRecognition; if(!S) return; const r = new S(); r.lang = 'bg-BG'; const b = document.getElementById('vBtn'); b.classList.add('mic-on'); r.onresult = (e) => { let t = e.results[0][0].transcript.toLowerCase(); let n = parseFloat(t.replace(',', '.').replace(/[^0-9.]/g,'')); if(!isNaN(n)){ if(t.includes('стотинки') || t.includes(' ст')) { n /= 100; setActive('bgn'); } else if(t.includes('цент')) { n /= 100; setActive('eur'); } else if(t.includes('евро')) setActive('eur'); else setActive('bgn'); exp = n.toString(); document.getElementById(activeId).value = exp; up(); ex(); } }; r.onend = () => b.classList.remove('mic-on'); r.start(); }
-</script>
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <h2>🛡️ ИНСТРУКЦИИ ЗА ПОЛЗВАНЕ</h2>
+            <p>1. <b>ИЗБОР:</b> Натиснете полето "ЛЕВА" или "ЕВРО", за да изберете в какво ще пишете.</p>
+            <p>2. <b>ГЛАС:</b> Натиснете микрофона 🎤 и кажете например "Петдесет стотинки" или "Десет евро".</p>
+            <p>3. <b>ПАЗАРУВАНЕ:</b> С бутона <b>+ ДОБАВИ</b> можете да събирате цените на продуктите в магазина.</p>
+            <p>4. <b>ИЗТРИВАНЕ:</b> Бутонът <b>C</b> изтрива всичко, а <b>⌫</b> изтрива последната цифра.</p><button
+                class="close-btn" onclick="closeHelp()">РАЗБРАХ, БЛАГОДАРЯ!</button>
+        </div>
+    </div>
+    <div class="app">
+        <div class="top-bar"><button class="top-btn" onclick="openHelp()">ПОМОЩ ❓</button>
+            <p class="title">ЕВРО СТРАЖ</p><button class="top-btn" onclick="shareApp()">СПОДЕЛИ 🔗</button>
+        </div>
+        <div id="speech">Система в помощ на хората</div>
+        <div class="display">
+            <div class="field" id="f-bgn" onclick="setActive('bgn')"><label>ЛЕВА И СТОТИНКИ (BGN)</label><input
+                    type="text" id="bgn" value="0" readonly><span class="unit">лв.</span></div>
+            <div class="field" id="f-eur" onclick="setActive('eur')"><label>ЕВРО И ЦЕНТОВЕ (EUR)</label><input
+                    type="text" id="eur" value="0.00" readonly><span class="unit">€</span></div>
+        </div>
+        <div class="cart" id="cart"></div>
+        <div class="keys"><button class="c-btn" onclick="cl()">C</button><button class="del-btn"
+                onclick="dl()">⌫</button><button id="vBtn" class="mic-btn" onclick="vc()">🎤</button><button class="op"
+                onclick="p('/')">÷</button><button onclick="p('7')">7</button><button onclick="p('8')">8</button><button
+                onclick="p('9')">9</button><button class="op" onclick="p('*')">×</button><button
+                onclick="p('4')">4</button><button onclick="p('5')">5</button><button onclick="p('6')">6</button><button
+                class="op" onclick="p('-')">−</button><button onclick="p('1')">1</button><button
+                onclick="p('2')">2</button><button onclick="p('3')">3</button><button class="op"
+                onclick="p('+')">+</button><button onclick="p('0')">0</button><button onclick="p('.')">.</button><button
+                class="add-btn" onclick="addToCart()">+ ДОБАВИ</button><button class="eq-btn"
+                onclick="ex()">РАВНО</button></div>
+        <div class="footer-fixed">
+            <!-- AdSense Display Ad -->
+            <div id="ad-space">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8552016454740259"
+                    data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <!-- Affiliate Buttons -->
+            <div style="padding: 10px; background: #0a0a0a; border-top: 1px solid #222;">
+                <a href="https://wise.com/invite/u/hristod123" target="_blank" rel="noopener"
+                    style="display: block; background: linear-gradient(135deg, #37517e, #00b9ff); color: white; text-decoration: none; padding: 12px; border-radius: 8px; margin-bottom: 8px; text-align: center; font-weight: bold; font-size: 14px;">
+                    💱 Обмени валута с Wise - 0% такса на първия превод
+                </a>
+                <a href="https://www.revolut.com/referral/?referral-code=hristoxpjb" target="_blank" rel="noopener"
+                    style="display: block; background: linear-gradient(135deg, #0075eb, #00d4ff); color: white; text-decoration: none; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 14px;">
+                    💳 Revolut - Най-добър курс за обмяна
+                </a>
+            </div>
+
+            <div class="info"><span style="color:var(--accent); font-weight:900;">DIMOFF STUDIO PRO V2</span><span
+                    style="color:#666; font-weight: bold;">КУРС: 1.95583</span></div>
+        </div>
+    </div>
+    <script>
+        const R = 1.95583; let exp = "", activeId = "bgn", totalBGN = 0;
+        function openHelp() { document.getElementById('helpModal').style.display = 'block'; }
+        function closeHelp() { document.getElementById('helpModal').style.display = 'none'; }
+        function shareApp() { if (navigator.share) { navigator.share({ title: 'Евро Страж', text: 'Ползвай безплатния калкулатор на Dimoff Studio!', url: window.location.href }); } else { alert("Копирай линка и го изпрати на приятел!"); } }
+        function setActive(id) { activeId = id; document.getElementById('f-bgn').classList.remove('active'); document.getElementById('f-eur').classList.remove('active'); document.getElementById('f-' + id).classList.add('active'); exp = ""; document.getElementById('speech').innerText = "Режим: " + (id === "bgn" ? "ЛЕВА" : "ЕВРО"); }
+        function p(v) { exp += v; document.getElementById(activeId).value = exp; up(); }
+        function cl() { exp = ""; totalBGN = 0; document.getElementById('bgn').value = "0"; document.getElementById('eur').value = "0.00"; document.getElementById('cart').innerHTML = ""; document.getElementById('speech').innerText = "Изчистено"; }
+        function dl() { exp = exp.toString().slice(0, -1); document.getElementById(activeId).value = exp || "0"; up(); }
+        function up() { try { let v = eval(exp.replace('×', '*').replace('÷', '/')) || 0; if (activeId === "bgn") document.getElementById('eur').value = (v / R).toFixed(2); else document.getElementById('bgn').value = (v * R).toFixed(2); } catch (e) { } }
+        function addToCart() { try { let val = eval(exp.replace('×', '*').replace('÷', '/')) || 0; if (val === 0) return; let bgnVal = (activeId === "bgn") ? val : val * R; totalBGN += bgnVal; const item = document.createElement('div'); item.style.padding = "3px 0"; item.innerHTML = `+ ${val.toFixed(2)} ${activeId.toUpperCase()} (Общо: ${(totalBGN / R).toFixed(2)} €)`; document.getElementById('cart').prepend(item); exp = ""; document.getElementById(activeId).value = "0"; } catch (e) { } }
+        function ex() { try { let r = eval(exp.replace('×', '*').replace('÷', '/')); let res = r.toFixed(2); if (activeId === "bgn") { let ev = (r / R).toFixed(2); document.getElementById('bgn').value = res; document.getElementById('eur').value = ev; document.getElementById('speech').innerText = res + " лв. = " + ev + " €"; } else { let lv = (r * R).toFixed(2); document.getElementById('eur').value = res; document.getElementById('bgn').value = lv; document.getElementById('speech').innerText = res + " € = " + lv + " лв."; } exp = res; } catch (e) { cl(); } }
+        function vc() { const S = window.SpeechRecognition || window.webkitSpeechRecognition; if (!S) return; const r = new S(); r.lang = 'bg-BG'; const b = document.getElementById('vBtn'); b.classList.add('mic-on'); r.onresult = (e) => { let t = e.results[0][0].transcript.toLowerCase(); let n = parseFloat(t.replace(',', '.').replace(/[^0-9.]/g, '')); if (!isNaN(n)) { if (t.includes('стотинки') || t.includes(' ст')) { n /= 100; setActive('bgn'); } else if (t.includes('цент')) { n /= 100; setActive('eur'); } else if (t.includes('евро')) setActive('eur'); else setActive('bgn'); exp = n.toString(); document.getElementById(activeId).value = exp; up(); ex(); } }; r.onend = () => b.classList.remove('mic-on'); r.start(); }
+    </script>
 </body>
+
 </html>
